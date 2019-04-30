@@ -10,17 +10,18 @@ namespace Hoopp.Flash.Core.Test
 {
     public static class HttpClientExtensions
     {
-        public static async Task<HttpResponseMessage> GetAsync<T>(this HttpClient client, string pathString,
-            Action<HttpRequestMessage> replay = null) where T : class
+        public static async Task<HttpResponseMessage> GetAsync(this HttpClient client, string pathString,
+            Action<HttpRequestMessage> replay = null) 
         {
             return await SendWithoutBodyAsync(client, HttpMethods.Get, pathString, replay);
         }
 
-        private static Task<HttpResponseMessage> SendWithoutBodyAsync(HttpClient client, object get, string pathString, Action<HttpRequestMessage> replay)
+        public static async Task<HttpResponseMessage> OptionsAsync(this HttpClient client, string pathString,
+            Action<HttpRequestMessage> replay = null) 
         {
-            throw new NotImplementedException();
+            return await SendWithoutBodyAsync(client, HttpMethods.Options, pathString, replay);
         }
-
+        
         public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string pathString, T body,
             Action<HttpRequestMessage> replay = null) where T : class
         {
@@ -73,8 +74,10 @@ namespace Hoopp.Flash.Core.Test
             Contract.Assert(pathString != null);
             if (!pathString.StartsWith("/"))
                 pathString = $"/{pathString}";
+
             if (!pathString.EndsWith("/"))
                 pathString = $"{pathString}/";
+
             return pathString;
         }
     }

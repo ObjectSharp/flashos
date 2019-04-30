@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace OHTN.Runtime.Test.InteractionTests.Helpers
+namespace Hoopp.Flash.Core.Test
 {
     public static class HttpResponseMessageExtensions
     {
