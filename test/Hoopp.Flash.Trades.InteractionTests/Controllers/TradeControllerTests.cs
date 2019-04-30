@@ -1,3 +1,4 @@
+using System.Net;
 using System.Threading.Tasks;
 using Hoopp.Flash.Core.Test;
 using Hoopp.Flash.Trades.Domain.Configuration;
@@ -34,6 +35,8 @@ namespace Hoopp.Flash.Trades.InteractionTests.Controllers
         [Fact]
         public async Task Options_trades_with_custom_config_returns_200()
         {
+            // NOTE: Shows how to replace configuration options, but any registered
+            // service can be replaced using this method
             using (var client = _factory.WithWebHostBuilder(builder =>
             {
                 builder.ConfigureTestServices(services =>
@@ -60,6 +63,28 @@ namespace Hoopp.Flash.Trades.InteractionTests.Controllers
                 Assert.NotNull(result);
                 Assert.Equal("NEW-TICKER", result.DefaultTicker);
                 Assert.Equal(100, result.MaxTransactionLimit);
+            }
+        }
+
+        [Fact]
+        public async Task Options_trades_with_disabled_config_returns_404()
+        {
+            // NOTE: Shows how to replace configuration options, but any registered
+            // service can be replaced using this method
+            using (var client = _factory.WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureTestServices(services =>
+                {
+                    services.ReplaceAsSingleton<IOptions<TradeServiceOptions>>(
+                        x => Options.Create(new TradeServiceOptions
+                        {
+                            ConfigEndpointEnabled = false
+                        }));
+                });
+            }).CreateClient())
+            {
+                var response = await client.OptionsAsync("api/trades");
+                Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
             }
         }
     }
