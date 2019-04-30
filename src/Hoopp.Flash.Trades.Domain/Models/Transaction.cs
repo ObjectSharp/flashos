@@ -1,4 +1,4 @@
-﻿namespace Hoopp.Flash.Domain.Models
+﻿namespace Hoopp.Flash.Trades.Domain.Models
 {
     public class Transaction
     {

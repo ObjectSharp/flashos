@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Hoopp.Flash.Domain.Configuration;
-using Hoopp.Flash.Domain.Models;
+using Hoopp.Flash.Core.Services;
+using Hoopp.Flash.Trades.Domain.Configuration;
+using Hoopp.Flash.Trades.Domain.Models;
 using Microsoft.Extensions.Options;
 
-namespace Hoopp.Flash.Domain.Services
+namespace Hoopp.Flash.Trades.Domain.Services
 {
     public class TradeService : ITradeService
     {

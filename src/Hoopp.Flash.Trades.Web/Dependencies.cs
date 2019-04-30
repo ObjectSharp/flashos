@@ -1,12 +1,13 @@
-﻿using Hoopp.Flash.Domain.Configuration;
-using Hoopp.Flash.Domain.DataAccess;
-using Hoopp.Flash.Domain.Models;
-using Hoopp.Flash.Domain.Services;
+﻿using Hoopp.Flash.Core.Services;
+using Hoopp.Flash.Trades.Domain.Configuration;
+using Hoopp.Flash.Trades.Domain.DataAccess;
+using Hoopp.Flash.Trades.Domain.Models;
+using Hoopp.Flash.Trades.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Hoopp.Flash.Web
+namespace Hoopp.Flash.Trades.Web
 {
     // TIP: Isolate your DI code to a single class
     public static class Dependencies

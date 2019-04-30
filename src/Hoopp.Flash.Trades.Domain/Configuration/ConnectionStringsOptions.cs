@@ -1,4 +1,4 @@
-﻿namespace Hoopp.Flash.Domain.Configuration
+﻿namespace Hoopp.Flash.Trades.Domain.Configuration
 {
     public class ConnectionStringsOptions
     {

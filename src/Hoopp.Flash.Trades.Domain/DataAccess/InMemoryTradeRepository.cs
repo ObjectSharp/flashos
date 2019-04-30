@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hoopp.Flash.Domain.Configuration;
-using Hoopp.Flash.Domain.Models;
+using Hoopp.Flash.Trades.Domain.Configuration;
+using Hoopp.Flash.Trades.Domain.Models;
 using Microsoft.Extensions.Options;
 
-namespace Hoopp.Flash.Domain.DataAccess
+namespace Hoopp.Flash.Trades.Domain.DataAccess
 {
     public class InMemoryTradeRepository : ITradeRepository
     {

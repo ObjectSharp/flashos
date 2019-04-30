@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hoopp.Flash.Domain.Models
+namespace Hoopp.Flash.Trades.Domain.Models
 {
     public class Trade
     {

@@ -1,4 +1,4 @@
-﻿namespace Hoopp.Flash.Domain.Configuration
+﻿namespace Hoopp.Flash.Trades.Domain.Configuration
 {
     // Set default configuration values in class
     // Override order: defaults -> appsettings -> environment variables

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Hoopp.Flash.Domain.Configuration;
-using Hoopp.Flash.Domain.Models;
+using Hoopp.Flash.Trades.Domain.Configuration;
+using Hoopp.Flash.Trades.Domain.Models;
 
-namespace Hoopp.Flash.Domain.Services
+namespace Hoopp.Flash.Trades.Domain.Services
 {
     public interface ITradeService
     {

@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
-using Hoopp.Flash.Domain.Models;
-using Hoopp.Flash.Domain.Services;
+using Hoopp.Flash.Trades.Domain.Models;
+using Hoopp.Flash.Trades.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Hoopp.Flash.Web.Controllers
+namespace Hoopp.Flash.Trades.Web.Controllers
 {
     [Route("api/trades")]
     public class TradeController : ControllerBase

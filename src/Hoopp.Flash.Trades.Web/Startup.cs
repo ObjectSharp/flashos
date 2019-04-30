@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Hoopp.Flash.Web
+namespace Hoopp.Flash.Trades.Web
 {
     // Interaction Test (Replace)
     // Fluent Validator

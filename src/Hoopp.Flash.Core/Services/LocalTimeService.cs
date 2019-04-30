@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hoopp.Flash.Domain.Services
+namespace Hoopp.Flash.Core.Services
 {
     public class LocalTimeService : ILocalTimeService
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration.EnvironmentVariables;
 
-namespace Hoopp.Flash.Web
+namespace Hoopp.Flash.Trades.Web
 {
     public class Program
     {
