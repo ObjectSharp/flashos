@@ -7,6 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Hoopp.Flash.Web
 {
+    // Interaction Test (Replace)
+    // Fluent Validator
+    // Metrics
+    // SQL Streaming
+    //
+    // Hana Data - Smart Caching, where should the data live.
+    
     public class Startup
     {
         public Startup(IConfiguration configuration)

@@ -21,7 +21,8 @@ namespace Hoopp.Flash.Web
                         .FirstOrDefault(x => x.GetType() == typeof(EnvironmentVariablesConfigurationSource));
 
                     if (envVarConfig != null)
-                        envVarConfig.Prefix = "FLASHOS-";
+                        envVarConfig.Prefix = "FLASHOS-TRADE-";
+
                 })
                 .UseStartup<Startup>();
 

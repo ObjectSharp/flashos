@@ -6,6 +6,11 @@ namespace Hoopp.Flash.Domain.Models
     public interface ITradeRepository
     {
         Task<bool> InsertAsync(Trade trade);
-        Task<IList<Trade>> GetByTicker(string ticker);
+
+        Task<bool> InsertBatchAsync(IEnumerable<Trade> trade);
+
+        Task<Trade> GetByIdAsync(string tradeId);
+
+        Task<IEnumerable<Trade>> GetByTickerAsync(string ticker);
     }
 }
