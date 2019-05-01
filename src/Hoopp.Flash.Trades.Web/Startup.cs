@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using FluentValidation.AspNetCore;
+using Hoopp.Flash.Trades.Domain.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Hoopp.Flash.Trades.Web
 {
-    // Interaction Test (Replace)
-    // Fluent Validator
-    // Metrics
-    // SQL Streaming
-    //
-    // Hana Data - Smart Caching, where should the data live.
-    
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -38,7 +33,9 @@ namespace Hoopp.Flash.Trades.Web
                     .AllowCredentials();
             }));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<TradeValidator>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
