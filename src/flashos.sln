@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{928D19AF-AF2C-4F17-AEA6-4B52101D171D}"
+	ProjectSection(SolutionItems) = preProject
+		core.md = core.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TradeService", "TradeService", "{6C290865-BC9F-445C-9EEA-1DBC6C2CE8FE}"
+	ProjectSection(SolutionItems) = preProject
+		trade-service.md = trade-service.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A026D26D-7FDB-436C-B141-6A1F796592D9}"
+	ProjectSection(SolutionItems) = preProject
+		..\test\code-coverage.runsettings = ..\test\code-coverage.runsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FB0EC0C5-717E-4E9C-BE20-553FB74AA5F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoopp.Flash.Core.UnitTests", "..\test\Hoopp.Flash.Core.UnitTests\Hoopp.Flash.Core.UnitTests.csproj", "{CD2CC0F8-1949-4D13-BE18-15A86C235349}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoopp.Flash.Core", "Hoopp.Flash.Core\Hoopp.Flash.Core.csproj", "{DD45A703-DDCA-4097-9FA0-1291E991B246}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoopp.Flash.Trades.Web", "Hoopp.Flash.Trades.Web\Hoopp.Flash.Trades.Web.csproj", "{4226DBF4-D443-4C95-BE1F-12014B287DD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoopp.Flash.Trades.Domain", "Hoopp.Flash.Trades.Domain\Hoopp.Flash.Trades.Domain.csproj", "{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoopp.Flash.Trades.InteractionTests", "..\test\Hoopp.Flash.Trades.InteractionTests\Hoopp.Flash.Trades.InteractionTests.csproj", "{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hoopp.Flash.Trades.UnitTests", "..\test\Hoopp.Flash.Trades.UnitTests\Hoopp.Flash.Trades.UnitTests.csproj", "{50777638-D4F6-485C-A965-74EEABE4540D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD2CC0F8-1949-4D13-BE18-15A86C235349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2CC0F8-1949-4D13-BE18-15A86C235349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2CC0F8-1949-4D13-BE18-15A86C235349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2CC0F8-1949-4D13-BE18-15A86C235349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD45A703-DDCA-4097-9FA0-1291E991B246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD45A703-DDCA-4097-9FA0-1291E991B246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD45A703-DDCA-4097-9FA0-1291E991B246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD45A703-DDCA-4097-9FA0-1291E991B246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4226DBF4-D443-4C95-BE1F-12014B287DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4226DBF4-D443-4C95-BE1F-12014B287DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4226DBF4-D443-4C95-BE1F-12014B287DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4226DBF4-D443-4C95-BE1F-12014B287DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50777638-D4F6-485C-A965-74EEABE4540D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50777638-D4F6-485C-A965-74EEABE4540D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50777638-D4F6-485C-A965-74EEABE4540D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50777638-D4F6-485C-A965-74EEABE4540D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A026D26D-7FDB-436C-B141-6A1F796592D9} = {6C290865-BC9F-445C-9EEA-1DBC6C2CE8FE}
+		{FB0EC0C5-717E-4E9C-BE20-553FB74AA5F5} = {928D19AF-AF2C-4F17-AEA6-4B52101D171D}
+		{CD2CC0F8-1949-4D13-BE18-15A86C235349} = {FB0EC0C5-717E-4E9C-BE20-553FB74AA5F5}
+		{DD45A703-DDCA-4097-9FA0-1291E991B246} = {928D19AF-AF2C-4F17-AEA6-4B52101D171D}
+		{4226DBF4-D443-4C95-BE1F-12014B287DD7} = {6C290865-BC9F-445C-9EEA-1DBC6C2CE8FE}
+		{B0AC9D12-44C7-4D98-9BA5-625A0D0098B5} = {6C290865-BC9F-445C-9EEA-1DBC6C2CE8FE}
+		{5D9D5A77-884C-45DC-AA8E-8A95B455DDD1} = {A026D26D-7FDB-436C-B141-6A1F796592D9}
+		{50777638-D4F6-485C-A965-74EEABE4540D} = {A026D26D-7FDB-436C-B141-6A1F796592D9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C08B37E3-55F8-42A4-A254-062D9A6E8964}
+	EndGlobalSection
+EndGlobal
