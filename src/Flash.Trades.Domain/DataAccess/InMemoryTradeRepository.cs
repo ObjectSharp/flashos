@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Flash.Trades.Domain.Configuration;
@@ -8,6 +9,10 @@ using Microsoft.Extensions.Options;
 
 namespace Flash.Trades.Domain.DataAccess
 {
+    // NOTE: Typically we would exclude repositories from code coverage since
+    // they tend to require access to external dependencies (sql). There are 
+    // ways to use LocalDB, but these start getting slow.
+    [ExcludeFromCodeCoverage]
     public class InMemoryTradeRepository : ITradeRepository
     {
         // Injected fields should be readonly
@@ -40,14 +45,29 @@ namespace Flash.Trades.Domain.DataAccess
                 _data.Values.Where(x => x.Ticker.Equals(ticker, StringComparison.OrdinalIgnoreCase)));
         }
 
-        public Task<bool> InsertBatchAsync(IEnumerable<Trade> trade)
+        public async Task<int> InsertBatchAsync(IEnumerable<Trade> trades)
         {
-            throw new System.NotImplementedException();
+            return await Task.Run(() =>
+            {
+                var i = 0;
+                foreach (var trade in trades)
+                {
+                    _data.Add(trade.Id, trade);
+                    i++;
+                }
+                return i;
+            });
         }
 
-        public Task<Trade> GetByIdAsync(string tradeId)
+        public async Task<Trade> GetByIdAsync(string tradeId)
         {
-            throw new System.NotImplementedException();
+            return await Task.Run(() =>
+            {
+                if (_data.TryGetValue(tradeId, out var trade))
+                    return trade;
+
+                return null;
+            });
         }
     }
 }

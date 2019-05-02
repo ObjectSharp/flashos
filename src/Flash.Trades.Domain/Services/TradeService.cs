@@ -44,8 +44,7 @@ namespace Flash.Trades.Domain.Services
         public async Task<Trade> InsertAsync(Trade trade)
         {
             // Enrich payload
-            trade.Id = _uids.GenerateString();
-            trade.CreatedAt = _timestamps.Now();
+            Enrich(trade);
 
             // Store
             var result = await _repo.InsertAsync(trade);
@@ -53,6 +52,22 @@ namespace Flash.Trades.Domain.Services
                 return trade;
             
             return null;
+        }
+
+        public async Task<int> InsertBatchAsync(IEnumerable<Trade> trades)
+        {
+            // Enrich
+            foreach (var trade in trades)
+                Enrich(trade);
+
+            var result = await _repo.InsertBatchAsync(trades);
+            return result;
+        }
+
+        private void Enrich(Trade trade)
+        {
+            trade.Id = _uids.GenerateString();
+            trade.CreatedAt = _timestamps.Now();
         }
     }
 }

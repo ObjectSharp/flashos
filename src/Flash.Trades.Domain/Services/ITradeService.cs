@@ -16,5 +16,6 @@ namespace Flash.Trades.Domain.Services
 
         // Writes
         Task<Trade> InsertAsync(Trade trade);
+        Task<int> InsertBatchAsync(IEnumerable<Trade> trades);
     }
 }

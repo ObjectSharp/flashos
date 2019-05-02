@@ -7,7 +7,7 @@ namespace Flash.Trades.Domain.Models
     {
         Task<bool> InsertAsync(Trade trade);
 
-        Task<bool> InsertBatchAsync(IEnumerable<Trade> trade);
+        Task<int> InsertBatchAsync(IEnumerable<Trade> trades);
 
         Task<Trade> GetByIdAsync(string tradeId);
 

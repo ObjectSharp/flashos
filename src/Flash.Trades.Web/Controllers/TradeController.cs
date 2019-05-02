@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Flash.Trades.Domain.Models;
 using Flash.Trades.Domain.Services;
+using Flash.Trades.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -38,6 +39,13 @@ namespace Flash.Trades.Web.Controllers
             return BadRequest(); 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByTicker([FromQuery]string ticker)
+        {
+            var result = await _service.GetByTickerAsync(ticker);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Insert([FromBody]Trade trade)
         {
@@ -46,6 +54,19 @@ namespace Flash.Trades.Web.Controllers
 
             var result = await _service.InsertAsync(trade);
             return Created($"/api/trades/{result.Id}", result);
+        }
+
+        [HttpPost("batch")]
+        public async Task<IActionResult> InsertBatch([FromBody]TradeBatch trades)
+        {
+            if (trades == null || trades.Data == null)
+                return BadRequest();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _service.InsertBatchAsync(trades.Data);
+            return Ok(result);
         }
     }
 }
