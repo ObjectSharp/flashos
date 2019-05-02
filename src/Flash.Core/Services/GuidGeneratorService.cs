@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace Flash.Core.Services
+{
+    public class GuidGeneratorService : IGuidGeneratorService
+    {
+        public Guid GenerateGuid()
+        {
+            return Guid.NewGuid();
+        }
+
+        public string GenerateString()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
+    }
+}
