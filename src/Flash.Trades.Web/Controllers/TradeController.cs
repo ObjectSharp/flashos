@@ -21,7 +21,7 @@ namespace Flash.Trades.Web.Controllers
         [HttpOptions]
         public IActionResult Config()
         {
-            if (Debugger.IsAttached || _service.CurrentConfig.ConfigEndpointEnabled)
+            if (_service.CurrentConfig.ConfigEndpointEnabled)
                 return Ok(_service.CurrentConfig);
 
             return NotFound();
@@ -43,7 +43,10 @@ namespace Flash.Trades.Web.Controllers
         public async Task<IActionResult> GetByTicker([FromQuery]string ticker)
         {
             var result = await _service.GetByTickerAsync(ticker);
-            return Ok(result);
+
+            // This is again a preference, but my frontend devs prefer to always
+            // return an object with the items inside, instead of a direct array
+            return Ok(new TradeBatch { Data = result });
         }
 
         [HttpPost]

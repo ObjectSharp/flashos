@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Flash.Core.Test;
 using Flash.Trades.Domain.Configuration;
 using Flash.Trades.Domain.Models;
 using Flash.Trades.Web;
+using Flash.Trades.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Options;
@@ -153,5 +156,111 @@ namespace Flash.Trades.InteractionTests.Controllers
                 Assert.Equal("ticker", result.Ticker);
             }
         }
+
+        [Fact]
+        public async Task Get_trades_with_valid_ticker_returns_trades_200()
+        {
+            // NOTE: Shows how to replace a service with a mock service
+            using (var client = _factory.WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureTestServices(services =>
+                {
+                    services.ReplaceAsSingleton<ITradeRepository>(
+                        x =>
+                        {
+                            var trades = new[]
+                            {
+                                new Trade
+                                {
+                                    Id = "1",
+                                    CreatedAt = DateTimeOffset.Now,
+                                    Notes = "notes 1",
+                                    Ticker = "TCKR"
+                                },
+                                new Trade
+                                {
+                                    Id = "2",
+                                    CreatedAt = DateTimeOffset.Now,
+                                    Notes = "notes 2",
+                                    Ticker = "TCKR"
+                                }
+                            };
+                            var mock = A.Fake<ITradeRepository>();
+                            A.CallTo(() => mock.GetByTickerAsync("TCKR")).Returns(
+                                Task.FromResult<IEnumerable<Trade>>(trades)
+                            );
+                            return mock;
+                        });
+                });
+            }).CreateClient())
+            {
+                var response = await client.GetAsync($"api/trades?ticker=TCKR");
+                Assert.True(response.IsSuccessStatusCode);
+
+                var result = await response.ReadAsAsync<TradeBatch>();
+                Assert.NotNull(result);
+                Assert.NotNull(result.Data);
+                Assert.Equal(2, result.Data.Count());
+            }
+        }
+
+        [Fact]
+        public async Task Get_trades_with_invvalid_ticker_returns_empty_200()
+        {
+            // NOTE: Shows how to replace a service with a mock service
+            using (var client = _factory.WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureTestServices(services =>
+                {
+                    services.ReplaceAsSingleton<ITradeRepository>(
+                        x =>
+                        {
+                            var mock = A.Fake<ITradeRepository>();
+                            A.CallTo(() => mock.GetByTickerAsync("INVD")).Returns(
+                                Task.FromResult<IEnumerable<Trade>>(new Trade[0])
+                            );
+                            return mock;
+                        });
+                });
+            }).CreateClient())
+            {
+                var response = await client.GetAsync($"api/trades?ticker=INVD");
+                Assert.True(response.IsSuccessStatusCode);
+
+                var result = await response.ReadAsAsync<TradeBatch>();
+                Assert.NotNull(result);
+                Assert.NotNull(result.Data);
+                Assert.Empty(result.Data);
+            }
+        }
+
+        //[Fact]
+        //public async Task Post_trades_with_valid_trade_returns_trade_201()
+        //{
+        //    using (var client = _factory.WithWebHostBuilder(builder =>
+        //    {
+        //        builder.ConfigureTestServices(services =>
+        //        {
+        //            services.ReplaceAsSingleton<ITradeRepository>(
+        //                x =>
+        //                {
+        //                    var mock = A.Fake<ITradeRepository>();
+        //                    A.CallTo(() => mock.InsertAsync(A<Trade>._)).Returns(
+        //                        Task.FromResult(true)
+        //                    );
+        //                    return mock;
+        //                });
+        //        });
+        //    }).CreateClient())
+        //    {
+        //        var response = await client.PostAsync($"api/trades?ticker=TCKR");
+        //        Assert.True(response.IsSuccessStatusCode);
+
+        //        var result = await response.ReadAsAsync<TradeBatch>();
+        //        Assert.NotNull(result);
+        //        Assert.NotNull(result.Data);
+        //        Assert.Equal(2, result.Data.Count());
+        //    }
+        //}
     }
 }
