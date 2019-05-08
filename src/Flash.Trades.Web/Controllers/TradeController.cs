@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Flash.Core.Models;
 using Flash.Trades.Domain.Models;
 using Flash.Trades.Domain.Services;
-using Flash.Trades.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -46,7 +45,7 @@ namespace Flash.Trades.Web.Controllers
 
             // This is again a preference, but my frontend devs prefer to always
             // return an object with the items inside, instead of a direct array
-            return Ok(new TradeBatch { Data = result });
+            return Ok(new Batch<Trade> { Data = result });
         }
 
         [HttpPost]
@@ -60,11 +59,8 @@ namespace Flash.Trades.Web.Controllers
         }
 
         [HttpPost("batch")]
-        public async Task<IActionResult> InsertBatch([FromBody]TradeBatch trades)
+        public async Task<IActionResult> InsertBatch([FromBody]Batch<Trade> trades)
         {
-            if (trades == null || trades.Data == null)
-                return BadRequest();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 

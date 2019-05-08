@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Flash.Core.Validation;
 using Flash.Trades.Domain.Models;
+using Flash.Core.Models;
 
 namespace Flash.Trades.Domain.Validation
 {
@@ -19,6 +20,14 @@ namespace Flash.Trades.Domain.Validation
         private bool BeAValidTicker(string ticker)
         {
             return CommonValidators.IsValidTicker(ticker);
+        }
+    }
+
+    public class TradeBatchValidator : AbstractValidator<Batch<Trade>>
+    {
+        public TradeBatchValidator()
+        {
+            RuleForEach(x => x.Data).SetValidator(new TradeValidator());
         }
     }
 }
